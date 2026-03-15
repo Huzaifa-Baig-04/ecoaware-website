@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EcoAware | Environmental Sustainability</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f5f7f6;
+color:#333;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 80px;
+background:#1b5e20;
+color:white;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+nav h2{
+letter-spacing:2px;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* MOBILE MENU */
+
+.menu-toggle{
+display:none;
+font-size:28px;
+cursor:pointer;
+}
+
+/* HERO SECTION */
+
+.hero{
+position:relative;
+height:100vh;
+min-height:500px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+overflow:hidden;
+}
+
+/* VIDEO BACKGROUND */
+
+.hero-video{
+position:absolute;
+top:50%;
+left:50%;
+width:100%;
+height:100%;
+min-width:100%;
+min-height:100%;
+transform:translate(-50%,-50%);
+object-fit:cover;
+z-index:-2;
+}
+
+/* DARK OVERLAY */
+
+.hero::after{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6));
+z-index:-1;
+}
+
+.hero-content h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:22px;
+margin-bottom:30px;
+}
+
+/* CTA BUTTON */
+
+.hero-btn{
+background:#4caf50;
+color:white;
+padding:14px 28px;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.hero-btn:hover{
+background:#2e7d32;
+}
+
+/* SECTIONS */
+
+section{
+padding:80px 120px;
+}
+
+.section-title{
+text-align:center;
+font-size:35px;
+margin-bottom:40px;
+color:#1b5e20;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+/* CARD */
+
+.card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.card video{
+width:100%;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.card canvas{
+  width:100%;
+  height:300px;
+  border-radius:10px;
+}
+
+/* STATS */
+
+.stats{
+background:#2e7d32;
+color:white;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+text-align:center;
+}
+
+.stat-box{
+padding:30px;
+}
+
+.stat-box h2{
+font-size:40px;
+margin-bottom:10px;
+}
+
+/* FOOTER */
+
+footer{
+background:#1b5e20;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width:768px){
+
+nav{
+padding:15px 20px;
+}
+
+.menu-toggle{
+display:block;
+}
+
+nav ul{
+display:none;
+flex-direction:column;
+background:#1b5e20;
+position:absolute;
+top:60px;
+left:0;
+width:100%;
+text-align:center;
+}
+
+nav ul li{
+margin:15px 0;
+}
+
+nav ul.active{
+display:flex;
+}
+
+.hero{
+height: calc(100vw * 16 / 9);
+}
+
+.hero-content h1{
+font-size:34px;
+}
+
+.hero-content p{
+font-size:18px;
+}
+
+.hero-video{
+object-fit:cover;
+}
+
+section{
+padding:50px 20px;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.stats-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<h2>EcoAware</h2>
+
+<div class="menu-toggle" id="menu-toggle">
+<i class="fas fa-bars"></i>
+</div>
+
+<ul id="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#problems">Problems</a></li>
+<li><a href="#solutions">Solutions</a></li>
+<li><a href="#stats">Stats</a></li>
+<li><a href="#survey">Survey</a></li>
+<li><a href="#campaign">Campaign</a></li>
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<video autoplay muted loop playsinline class="hero-video">
+<source src="https://www.pexels.com/download/video/7048712/" type="video/mp4">
+</video>
+
+<div class="hero-content">
+<h1>Protect Our Planet</h1>
+<p>Digital Awareness for Environmental Sustainability</p>
+
+<a href="#survey" class="hero-btn">Take Environmental Survey</a>
+
+</div>
+
+</div>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="section-title">About This Project</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<p>
+This website was developed as part of the Community Engagement Project (CEP) to spread awareness about environmental sustainability. Individuals are encouraged to adopt eco-friendly habits such as recycling, tree plantation, water conservation and reducing plastic usage.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROBLEMS -->
+
+<section id="problems">
+
+<h2 class="section-title">Major Environmental Problems</h2>
+
+<div class="grid">
+
+<div class="card">
+<video autoplay muted loop playsinline>
+<source src="https://www.pexels.com/download/video/9736660/" type="video/mp4">
+</video>
+<h3>Plastic Pollution</h3>
+<p>Plastic pollution is a major environmental issue around the world. Millions of tons of plastic waste enter oceans, rivers, and land every year, harming marine animals and ecosystems. Many sea creatures accidentally consume plastic or get trapped in it, which can cause serious injury or death. </p>
+</div>
+
+<div class="card">
+<video autoplay muted loop playsinline>
+<source src="https://www.pexels.com/download/video/20184846/"type="video/mp4">
+</video>
+<h3>Deforestation</h3>
+<p>Deforestation refers to the large-scale cutting of forests for agriculture, urban development, and industrial activities. It leads to loss of biodiversity, destruction of wildlife habitats, and contributes to climate change.</p>
+</div>
+
+<div class="card">
+<img src="https://as2.ftcdn.net/v2/jpg/05/28/16/83/1000_F_528168372_FqY8fMLFoCOuCAUwL8FZGQ0ZPlw0zB2K.jpg">
+<h3>Climate Change</h3>
+<p>Climate change is caused mainly by the increase of greenhouse gases such as carbon dioxide released from human activities like burning fossil fuels and deforestation. It leads to rising global temperatures, melting glaciers, and extreme weather events.</p>
+</div>
+
+
+<div class="card">
+<video autoplay muted loop playsinline>
+<source src="https://www.pexels.com/download/video/5535467/" type="video/mp4">
+</video>
+<h3>Water Pollution</h3>
+<p>Water pollution occurs when harmful substances such as industrial waste, chemicals, and plastic materials enter rivers, lakes, and oceans. This contamination harms aquatic life and reduces the availability of clean drinking water.</p>
+</div>
+
+<div class="card">
+<video autoplay muted loop playsinline>
+<source src="https://www.pexels.com/download/video/5561805/" type="video/mp4">
+</video>
+<h3>Air Pollution</h3>
+<p>Air pollution occurs when harmful gases, smoke, and particles are released into the atmosphere from vehicles, factories, and burning fuels. It can cause serious health problems such as respiratory diseases and also contributes to global warming.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- SOLUTIONS -->
+
+<section id="solutions">
+
+<h2 class="section-title">Eco-Friendly Solutions</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="jeffry.jpeg">
+<h3>Use Cloth Bags</h3>
+<p>Using cloth bags instead of plastic bags is an effective way to reduce plastic pollution. Cloth bags are reusable, durable, and environmentally friendly. By choosing cloth bags while shopping, people can reduce plastic waste and help protect the environment and wildlife.</p>
+</div>
+
+<div class="card">
+<video autoplay muted loop playsinline>
+<source src="https://www.pexels.com/download/video/8544140/" type="video/mp4">
+</video>
+<h3>Plant Trees</h3>
+<p>Planting trees is an important step in protecting the environment. Trees absorb carbon dioxide from the atmosphere and release oxygen, which helps improve air quality. They also provide habitat for wildlife and help maintain ecological balance.</p>
+</div>
+
+<div class="card">
+<video autoplay muted loop playsinline>
+<source src="https://www.pexels.com/download/video/6591442/" type="video/mp4">
+</video>
+<h3>Recycling</h3>
+<p>Recycling helps reduce the amount of waste sent to landfills and conserves natural resources. Materials such as paper, plastic, glass, and metal can be reused to create new products. By practicing recycling, we can reduce pollution, save energy, and protect the environment.</p>
+</div>
+
+<div class="card">
+<video autoplay muted loop playsinline>
+<source src="https://www.pexels.com/download/video/9789926/" type="video/mp4">
+</video>
+<h3>Renewable Energy</h3>
+<p>Renewable energy sources such as solar and wind power help reduce dependence on fossil fuels. These energy sources are clean, sustainable, and produce less pollution. Using renewable energy can help reduce greenhouse gas emissions and protect the environment for future generations.</p>
+</div>
+
+<div class="card">
+<img src="donald.jpeg">
+<h3>Save Water</h3>
+<p>Saving water is essential for protecting freshwater resources and ensuring its availability for future generations. Simple actions such as fixing leaks, using water efficiently, and avoiding unnecessary wastage can make a big difference.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<section id="stats" class="stats">
+
+<h2 class="section-title">Environmental Statistics</h2>
+
+<div class="stats-grid">
+
+<div class="stat-box">
+<h2 class="counter" data-target="8000000">0</h2>
+<p>Tons of plastic enter oceans yearly</p>
+</div>
+
+<div class="stat-box">
+<h2 class="counter" data-target="10000000">0</h2>
+<p>Hectares of forest lost annually</p>
+</div>
+
+<div class="stat-box">
+<h2 class="counter" data-target="7000000">0</h2>
+<p>Deaths caused by air pollution yearly</p>
+</div>
+
+<div class="stat-box">
+<h2 class="counter" data-target="2000000000">0</h2>
+<p>People lack access to clean drinking water</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CHARTS -->
+
+<section id="charts">
+  <h2 class="section-title">Environmental Data Charts</h2>
+  <div class="grid">
+    <div class="card">
+      <canvas id="pollutionChart" aria-label="Pollution Sources Chart" role="img"></canvas>
+    </div>
+    <div class="card">
+      <canvas id="wasteChart" aria-label="Waste Management Distribution Chart" role="img"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- SURVEY -->
+
+<section id="survey">
+
+<h2 class="section-title">Environmental Awareness Survey</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<p>Please participate in our environmental awareness survey.</p>
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScbu_gLm0ek42NmpTpF9FabdwSmTagzR8Sb2V78MtcIyL99VQ/viewform?embedded=true"
+width="100%" height="700">
+Loading…
+</iframe>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CAMPAIGN -->
+
+<section id="campaign">
+
+<h2 class="section-title">Community Awareness Campaign</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<p>As part of this Community Engagement Project, digital awareness campaigns were conducted to educate community members about environmental sustainability. Information was shared about plastic pollution, climate change, and eco-friendly habits. Community members were encouraged to reduce plastic usage, conserve water, plant trees, and adopt recycling practices.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>Community Engagement Project</p>
+<p>Created by Huzaifa Baig</p>
+<p>BSc Data Science | Bunts Sangha's Anna Leela College</p>
+
+</footer>
+
+<script>
+
+const menuToggle=document.getElementById("menu-toggle");
+const navLinks=document.getElementById("nav-links");
+
+menuToggle.addEventListener("click",()=>{
+navLinks.classList.toggle("active");
+});
+
+const counters=document.querySelectorAll('.counter');
+
+counters.forEach(counter=>{
+counter.innerText='0';
+
+const updateCounter=()=>{
+const target=+counter.getAttribute('data-target');
+const c=+counter.innerText;
+const increment=target/200;
+
+if(c<target){
+counter.innerText=Math.ceil(c+increment);
+setTimeout(updateCounter,10);
+}else{
+counter.innerText=target.toLocaleString();
+}
+};
+
+updateCounter();
+});
+
+
+/* Dynamic video source based on device */
+const videoSource = document.querySelector('.hero-video source');
+const video = document.querySelector('.hero-video');
+
+if (window.innerWidth <= 768) {
+    videoSource.src = 'https://www.pexels.com/download/video/7049073/';
+} else {
+    videoSource.src = 'https://www.pexels.com/download/video/7048712/';
+}
+video.load();s
+
+/* Chart.js visualizations */
+const pollutionCtx = document.getElementById('pollutionChart').getContext('2d');
+const pollutionChart = new Chart(pollutionCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Plastic', 'Chemical', 'Sewage', 'Industrial'],
+        datasets: [{
+            label: 'Pollution Sources (%)',
+            data: [35, 25, 20, 20],
+            backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56'],
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Major Pollution Sources'
+            }
+        }
+    }
+});
+
+const wasteCtx = document.getElementById('wasteChart').getContext('2d');
+const wasteChart = new Chart(wasteCtx, {
+    type: 'pie',
+    data: {
+        labels: ['Recycled', 'Landfill', 'Incinerated', 'Ocean'],
+        datasets: [{
+            data: [30, 40, 15, 15],
+            backgroundColor: ['#4caf50', '#f44336', '#ff9800', '#2196f3'],
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Waste Management Distribution'
+            }
+        }
+    }
+});
+
+</script>
+
+</body>
+</html>
